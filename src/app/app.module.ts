@@ -4,7 +4,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
-import { MovieComponent } from './movie/movie.component';
 import { MovieListComponent } from './movie-list/movie-list.component';
 import { NgIconsModule } from '@ng-icons/core';
 import {
@@ -19,15 +18,9 @@ import {
   faSolidStar,
   faSolidChevronLeft,
   faSolidChevronUp,
-  faSolidChevronDown,
 } from '@ng-icons/font-awesome/solid';
 @NgModule({
-  declarations: [
-    AppComponent,
-    MovieDetailsComponent,
-    MovieComponent,
-    MovieListComponent,
-  ],
+  declarations: [AppComponent, MovieDetailsComponent, MovieListComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -42,7 +35,6 @@ import {
       faCalendar,
       faSolidChevronLeft,
       faSolidChevronUp,
-      faSolidChevronDown,
     }),
   ],
   providers: [],
