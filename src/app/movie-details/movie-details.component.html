@@ -1,0 +1,63 @@
+<div class="movie-details">
+  <img
+    class="background-image"
+    src="{{ '/assets/covers/' + movie.cover + '.png' }}"
+    alt="{{ movie.title }}"
+  >
+
+  <div class="content">
+    <div class="top-bar">
+      <a class="back-button" title="Back" [routerLink]="'/'">
+        <ng-icon name="faSolidChevronLeft"></ng-icon>
+      </a>  
+      <ng-icon
+        class="bookmark-icon"
+        (click)="onClickToggleWatchlist()"
+        [name]="movie.onWatchlist ? 'faSolidBookmark' : 'faBookmark'"
+        [title]="movie.onWatchlist ? 'Remove from watchlist' : 'Add to watchlist'"
+      ></ng-icon>
+    </div>
+  
+    <div class="column-1">
+      <h1 class="title">{{ movie.title }}</h1>
+
+      <div class="span-with-icon release-date"><ng-icon name="faCalendar"></ng-icon> <span>Released on {{ localizedReleaseDate }}</span></div>
+      
+      <div class="rating">
+        <div class="score">{{ movie.rating }}</div>
+        <div class="star-container">
+          <ng-icon class="star" *ngFor="let star of stars" [name]="star"></ng-icon>
+        </div>
+        <div class="out-of-ten">Out of 10</div>
+      </div>
+
+      <div class="span-with-icon duration"><ng-icon name="faClock"></ng-icon> <span>{{ duration }}</span></div>
+
+      <div class="genres">
+        <span>Genre</span> 
+        <ul>
+          <li *ngFor="let genre of movie.genre">{{ genre }}</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="column-2">
+      <p class="description">{{ movie.description }}</p>
+
+      <iframe
+        class="trailer-embed"
+        [src]="safeEmbed"
+        frameborder="0"
+        allow="
+          accelerometer;
+          autoplay;
+          clipboard-write;
+          encrypted-media;
+          gyroscope;
+          picture-in-picture;
+          web-share"
+        allowfullscreen
+      ></iframe>
+    </div>
+  </div>
+</div>

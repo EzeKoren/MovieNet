@@ -1,0 +1,66 @@
+<div class="movie-list">
+  <div class="info">
+    <div
+      class="data-entry"
+      [attr.data-visible]="lastHoveredMovie() == 0"
+      data-movie="default"
+    >
+      <h1>Welcome to <b>MovieNet</b></h1>
+      <h2>Your one stop shop for movie information</h2>
+      <div class="button-list">
+        <a class="btn" href="https://github.com/EzeKoren/MovieNet">See what's behind!</a>
+      </div>
+    </div>
+    <div
+      *ngFor="let movie of movies()"
+      class="data-entry"
+      [attr.data-visible]="lastHoveredMovie() == movie.id"
+      [attr.data-movie]="movie.id"
+    >
+      <h1>{{ movie.title }} <i>({{ getYear(movie.releasedDate) }})</i></h1>
+      <h2>{{ movie.genre.join(", ") }}</h2>
+      <div class="button-list">
+        <a
+        class="btn"
+        [title]="movie.title + ' details'"
+        [routerLink]="['/details', movie.id]"
+        >Learn more</a>
+        <button class="btn" (click)="toggleWatchlist(movie)">
+          {{ movie.onWatchlist ? 'Remove from watchlist' : 'Add to watchlist' }}
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <div class="order-by button-list">
+    Order by: 
+    <button class="btn reorder" (click)="setOrder('name')" >
+      Title <ng-icon
+        *ngIf="currentOrder()[0] == 'name'"
+        name='faSolidChevronUp'
+        [ngClass]="currentOrder()[1] == 'desc' ? 'icon reverse' : 'icon'"
+      ></ng-icon>
+    </button>
+    <button class="btn reorder" (click)="setOrder('date')" >
+      Release date <ng-icon
+        *ngIf="currentOrder()[0] == 'date'"
+        name='faSolidChevronUp'
+        [ngClass]="currentOrder()[1] == 'desc' ? 'icon reverse' : 'icon'"
+      ></ng-icon>
+    </button>
+  </div>
+  
+  <div class="carrousel">
+    <div 
+      *ngFor="let movie of movies()"
+      [classList]="[(lastHoveredMovie() == movie.id) ? 'image-container highlighted': 'image-container']" 
+    >
+      <img
+        [src]="'/assets/covers/' + movie.cover + '.png'"
+        [alt]="movie.title"
+        (mouseover)="onMoviePosterHover(movie.id)"
+      >
+      <ng-icon class="bookmark-icon" [name]="movie.onWatchlist ? 'faSolidBookmark' : 'faBookmark'"></ng-icon>
+    </div>
+  </div>
+</div>

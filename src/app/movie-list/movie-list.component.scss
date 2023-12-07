@@ -1,0 +1,103 @@
+.movie-list {
+  display: grid;
+  width: 100dvw;
+  height: 100dvh;
+  overflow: hidden;
+  grid-template-rows: 1fr auto auto;
+
+  .info {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    .data-entry {
+      position: absolute;
+      transition: all 500ms ease-in-out;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+
+      h1 {
+        font-family: var(--Playfair-Display);
+        font-weight: 400;
+        font-size: 3.5em;
+        margin: 0;
+
+        b {
+          font-weight: 900;
+        }
+      }
+
+      h2 {
+        font-family: var(--Source-Sans);
+      }
+
+      &[data-visible="true"] {
+        opacity: 1;
+      }
+
+      &[data-visible="false"] {
+        opacity: 0;
+        pointer-events: none;
+      }
+    }
+  }
+
+  .button-list {
+    display: inline-flex;
+    flex-direction: row;
+    gap: 5px;
+    font-family: var(--Source-Sans);
+    font-size: 1.2em;
+    align-items: stretch;
+  }
+
+  .reorder {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8ch;
+
+    .icon {
+      transition: all 125ms ease-in;
+    }
+
+    .icon.reverse {
+      rotate: 180deg;
+    }
+  }
+
+  .carrousel {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: 100%;
+    justify-content: center;
+
+    .image-container {
+      position: relative;
+      width: 310px;
+      height: 460px;
+      transition: all 250ms ease-in-out;
+
+      img {
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        object-fit: cover;
+      }
+
+      .bookmark-icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+        padding: 10px;
+        z-index: 3;
+        color: white;
+      }
+
+      &.highlighted {
+        scale: 1.1;
+        z-index: 2;
+      }
+    }
+  }
+}

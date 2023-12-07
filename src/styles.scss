@@ -1,1 +1,27 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,900;1,400;1,900&family=Source+Sans+3:ital,wght@0,200;0,400;1,200;1,400&display=swap");
+
+body {
+  margin: 0;
+
+  --Playfair-Display: "Playfair Display", serif;
+  --Source-Sans: "Source Sans 3", sans-serif;
+
+  --highlight: #306b93;
+  --highlight-light: #509bd1;
+  --highlight-dark: #204b6b;
+}
+
+.btn {
+  background-color: var(--highlight);
+  font-size: 1em;
+  padding: 0.8ch 1ch;
+  color: white;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  transition: all 100ms ease-out;
+
+  &:active {
+    scale: 0.9;
+  }
+}

@@ -1,0 +1,13 @@
+<div>
+  <h1>{{ movie.title }}</h1>
+  <h2>{{ movie.onWatchlist ? "On watchlist" : "Not on watchlist" }}</h2>
+  <button (click)="onClickToggleWatchlist()">{{ movie.onWatchlist ? "Remove from watchlist" : "Add to watchlist" }}</button>
+  <p>{{ movie.description }}</p>
+  <p>Rating: {{ movie.rating }}</p>
+  <p>Duration: {{ movie.duration }} minutes</p>
+  <p>Genre: {{ movie.genre.join(', ') }}</p>
+  <p>Released Date: {{ movie.releasedDate }}</p>
+  <p>Trailer: <a [href]="movie.trailerLink">Link</a></p>
+  <img [src]="'/assets/covers/' + movie.cover + '.png'" [alt]="movie.title">
+  <h1><a [title]="movie.title + ' details'" [routerLink]="['/details', movie.id]">DETAILS</a></h1>
+</div>
