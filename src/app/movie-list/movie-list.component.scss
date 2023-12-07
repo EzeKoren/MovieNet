@@ -55,6 +55,7 @@
     display: inline-flex;
     align-items: center;
     gap: 0.8ch;
+    margin-bottom: 2ch;
 
     .icon {
       transition: all 125ms ease-in;
@@ -74,8 +75,9 @@
 
     .image-container {
       position: relative;
-      width: 310px;
-      height: 460px;
+      width: 16vw;
+      height: auto;
+      aspect-ratio: 2 / 3;
       transition: all 250ms ease-in-out;
 
       img {
